@@ -75,6 +75,11 @@
   }
 }
 
+.ͼ1 .cm-scroller {
+  font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono',
+    'Courier New', monospace;
+}
+
 .cm-focused {
   @apply !outline-none;
 }

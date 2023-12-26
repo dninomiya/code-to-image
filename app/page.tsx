@@ -33,7 +33,7 @@ export default function Home() {
             theme={resolvedTheme === 'dark' ? githubDark : githubLight}
             onStatistics={(status) => console.log(status)}
             onCreateEditor={() => setReady(true)}
-            className="caret-transparent text-base"
+            className="caret-transparent text-base font-serif"
             basicSetup={{
               lineNumbers: false,
               foldGutter: false,

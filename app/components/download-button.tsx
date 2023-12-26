@@ -25,8 +25,6 @@ export default function DownloadButton() {
 
     const canvas = await html2canvas(element, {
       backgroundColor: resolvedTheme === 'dark' ? '#0d1117' : '#fff',
-      windowWidth: document.documentElement.offsetWidth,
-      windowHeight: document.documentElement.offsetHeight,
       scale: 4,
     });
     link.href = canvas.toDataURL('img/png');
