@@ -17,7 +17,6 @@ export default function ImageDropzone({
   });
 
   useEffect(() => {
-    console.log(acceptedFiles);
     if (acceptedFiles?.length > 0) {
       setImage(URL.createObjectURL(acceptedFiles[0]));
     }
