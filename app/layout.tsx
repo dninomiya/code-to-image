@@ -3,6 +3,8 @@ import './globals.css';
 import GithubLink from '@/app/components/github-link';
 import { ThemeProvider } from '@/app/providers/theme-provider';
 import AuthorLink from '@/app/components/author-link';
+import AppProvider from '@/app/providers/app-provider';
+import MobileGuard from '@/app/components/mobile-guard';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dninomiya.github.io'),
@@ -23,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider
           attribute="class"
@@ -31,7 +33,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AppProvider>
+            <MobileGuard>{children}</MobileGuard>
+          </AppProvider>
         </ThemeProvider>
         <AuthorLink />
         <GithubLink href="https://github.com/dninomiya/code-to-image/tree/main" />

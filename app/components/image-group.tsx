@@ -1,39 +1,11 @@
 'use client';
 
+import { useApp } from '@/app/providers/app-provider';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
 
 export default function ImageGroup() {
-  const [image, setImage] = useState<string | null>(
-    '/code-to-image/placeholder.png'
-  );
-
-  useEffect(() => {
-    async function handlePasteEvent(e: ClipboardEvent) {
-      if (!e.clipboardData) return;
-
-      const items = e.clipboardData.items;
-      const item = items[0];
-
-      if (item.type.indexOf('image') === 0) {
-        e.preventDefault();
-        alert();
-        const blob = item.getAsFile();
-
-        if (!blob) return;
-
-        const imageUrl = URL.createObjectURL(blob);
-        setImage(imageUrl);
-      }
-    }
-
-    document.addEventListener('paste', handlePasteEvent);
-
-    return () => {
-      document.removeEventListener('paste', handlePasteEvent);
-    };
-  }, []);
+  const { image, setImage } = useApp();
 
   if (!image) {
     return null;

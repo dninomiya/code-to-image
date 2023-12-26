@@ -1,7 +1,7 @@
 'use client';
 
+import ImageDropzone from '@/app/components/image-dropzone';
 import ImageGroup from '@/app/components/image-group';
-import MobileGuard from '@/app/components/mobile-guard';
 import ToolBar from '@/app/components/toolbar';
 import { cn } from '@/lib/utils';
 import { javascript } from '@codemirror/lang-javascript';
@@ -17,7 +17,7 @@ export default function Home() {
   const { resolvedTheme } = useTheme();
 
   return (
-    <MobileGuard>
+    <ImageDropzone>
       <div className="flex items-center justify-center flex-col min-h-[100dvh] bg-white dark:bg-[#0d1117]">
         <div
           id="canvas"
@@ -28,7 +28,7 @@ export default function Home() {
         >
           <div>
             <CodeMirror
-              placeholder={'You Can Paste Image\nSupport tsx, jsx, js'}
+              placeholder={'You Can Paste or Drop Image\nSupport tsx, jsx, js'}
               ref={editorFef}
               value=""
               autoFocus
@@ -50,6 +50,6 @@ export default function Home() {
 
         <ToolBar />
       </div>
-    </MobileGuard>
+    </ImageDropzone>
   );
 }
