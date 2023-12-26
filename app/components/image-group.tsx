@@ -14,9 +14,11 @@ export default function ImageGroup() {
       if (!e.clipboardData) return;
 
       const items = e.clipboardData.items;
-
       const item = items[0];
+
       if (item.type.indexOf('image') === 0) {
+        e.preventDefault();
+        alert();
         const blob = item.getAsFile();
 
         if (!blob) return;
