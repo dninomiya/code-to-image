@@ -9,7 +9,7 @@ export default function DownloadButton() {
   const downloadImage = async () => {
     const link = document.createElement('a');
     link.download = 'code-image.png';
-    link.href = await generateImage(resolvedTheme === 'dark');
+    link.href = (await generateImage(resolvedTheme === 'dark')) as string;
     link.click();
   };
 

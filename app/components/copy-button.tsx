@@ -2,19 +2,19 @@ import { Button } from '@/components/ui/button';
 import { generateImage } from '@/lib/generate-image';
 import { Check, Copy } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function CopyButton() {
   const { resolvedTheme } = useTheme();
   const [showCheck, setShowCheck] = useState(false);
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <Button
       size="icon"
       onClick={() => {
         setShowCheck(true);
-        generateImage(resolvedTheme === 'dark', true);
-
+        handleCopy(isDark);
         setTimeout(() => {
           setShowCheck(false);
         }, 1000);
@@ -26,4 +26,12 @@ export default function CopyButton() {
       <span className="sr-only">Copy Image</span>
     </Button>
   );
+}
+
+function handleCopy(isDark: boolean) {
+  navigator.clipboard.write([
+    new ClipboardItem({
+      'image/png': generateImage(isDark, true),
+    }),
+  ]);
 }

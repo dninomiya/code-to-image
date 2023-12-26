@@ -17,7 +17,6 @@
     "@uiw/react-codemirror": "^4.21.21",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "copy-image-clipboard": "^2.1.2",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.292.0",
     "next": "14.0.1",

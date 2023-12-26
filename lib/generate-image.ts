@@ -1,7 +1,9 @@
-import { copyBlobToClipboard } from 'copy-image-clipboard';
 import html2canvas from 'html2canvas';
 
-export const generateImage = async (isDark: boolean, shouldCopy?: boolean) => {
+export const generateImage = async (
+  isDark: boolean,
+  blob?: boolean
+): Promise<string | Blob> => {
   const style = document.createElement('style');
   document.head.appendChild(style);
   style.sheet?.insertRule(
@@ -23,14 +25,10 @@ export const generateImage = async (isDark: boolean, shouldCopy?: boolean) => {
   style.remove();
   element.style.width = 'auto';
 
-  if (shouldCopy) {
-    canvas.toBlob((blob) => {
-      copyBlobToClipboard(blob!).then(() => {
-        alert('Copied to clipboard!');
-      });
+  if (blob) {
+    return new Promise<Blob>((resolve) => {
+      canvas.toBlob((blob) => resolve(blob!));
     });
-
-    return '';
   }
 
   return canvas.toDataURL('img/png');
