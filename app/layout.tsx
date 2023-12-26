@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import GithubLink from '@/app/components/github-link';
-import AuthorLink from '@/app/components/author-link';
+import { ThemeProvider } from '@/app/providers/theme-provider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dninomiya.github.io'),
@@ -24,8 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
-        <AuthorLink />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <GithubLink href="https://github.com/dninomiya/code-to-image/tree/main" />
       </body>
     </html>

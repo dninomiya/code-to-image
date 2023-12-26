@@ -1,12 +1,11 @@
-import { Download } from 'lucide-react';
-import React, { RefObject } from 'react';
+import { Button } from '@/components/ui/button';
 import html2canvas from 'html2canvas';
+import { Download } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-export default function DownloadButton({
-  target,
-}: {
-  target: RefObject<HTMLDivElement>;
-}) {
+export default function DownloadButton() {
+  const { resolvedTheme } = useTheme();
+
   const downloadImage = async () => {
     const link = document.createElement('a');
     link.download = 'code-image.png';
@@ -16,28 +15,32 @@ export default function DownloadButton({
     style.sheet?.insertRule(
       'body > div:last-child img { display: inline-block; }'
     );
-    const element = target.current!;
+    const element = document.getElementById('canvas')!;
+    const width = element.offsetWidth;
+    const height = element.offsetHeight;
+
+    if (width && height && height * (16 / 9) > width) {
+      element.style.width = `${height * (16 / 9)}px`;
+    }
+
     const canvas = await html2canvas(element, {
-      backgroundColor: 'red',
+      backgroundColor: resolvedTheme === 'dark' ? '#0d1117' : '#fff',
       windowWidth: document.documentElement.offsetWidth,
       windowHeight: document.documentElement.offsetHeight,
+      scale: 4,
     });
     link.href = canvas.toDataURL('img/png');
-
-    // link.href = await toPng(target.current!, { quality: 0.95, pixelRatio: 10 });
 
     link.click();
 
     style.remove();
+    element.style.width = 'auto';
   };
 
   return (
-    <button
-      onClick={downloadImage}
-      className="bg-zinc-900 mx-auto mt-4 w-10 h-10 grid place-content-center rounded-full shadow-lg text-zinc-400"
-    >
+    <Button size="icon" onClick={downloadImage} className="rounded-full">
       <Download size={20} />
       <span className="sr-only">ダウンロード</span>
-    </button>
+    </Button>
   );
 }

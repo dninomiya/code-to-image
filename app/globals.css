@@ -75,10 +75,6 @@
   }
 }
 
-.cm-content {
-  @apply !p-10;
-}
-
 .cm-focused {
   @apply !outline-none;
 }
