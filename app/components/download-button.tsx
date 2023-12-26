@@ -1,6 +1,6 @@
-import { toPng } from 'html-to-image';
 import { Download } from 'lucide-react';
 import React, { RefObject } from 'react';
+import html2canvas from 'html2canvas';
 
 export default function DownloadButton({
   target,
@@ -10,8 +10,30 @@ export default function DownloadButton({
   const downloadImage = async () => {
     const link = document.createElement('a');
     link.download = 'my-image-name.png';
-    link.href = await toPng(target.current!, { quality: 0.95 });
+
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+    style.sheet?.insertRule(
+      'body > div:last-child img { display: inline-block; }'
+    );
+
+    const element = target.current!;
+    const canvas = await html2canvas(element, {
+      backgroundColor: 'red',
+      scrollX: -window.scrollX,
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.offsetWidth,
+      windowHeight: document.documentElement.offsetHeight,
+      allowTaint: true,
+      scale: 4,
+    });
+    link.href = canvas.toDataURL('img/png');
+
+    // link.href = await toPng(target.current!, { quality: 0.95, pixelRatio: 10 });
+
     link.click();
+
+    style.remove();
   };
 
   return (

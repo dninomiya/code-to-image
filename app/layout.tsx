@@ -5,11 +5,11 @@ import AuthorLink from '@/app/components/author-link';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dninomiya.github.io'),
-  title: 'Tree to Image',
-  description: 'Tree to Image',
+  title: 'Code to Image',
+  description: 'Code to Image',
   openGraph: {
-    title: 'Tree to Image',
-    description: 'Tree to Image',
+    title: 'Code to Image',
+    description: 'Code to Image',
   },
   twitter: {
     card: 'summary_large_image',
@@ -26,7 +26,7 @@ export default function RootLayout({
       <body>
         {children}
         <AuthorLink />
-        <GithubLink href="https://github.com/dninomiya/tree-to-image/tree/main" />
+        <GithubLink href="https://github.com/dninomiya/code-to-image/tree/main" />
       </body>
     </html>
   );
