@@ -1,3 +1,4 @@
+import CopyButton from '@/app/components/copy-button';
 import DownloadButton from '@/app/components/download-button';
 import { ModeToggle } from '@/app/components/mode-toggle';
 import SetImageButton from '@/app/components/set-image-button';
@@ -9,6 +10,7 @@ export default function ToolBar() {
       <SetImageButton />
       <ModeToggle />
       <DownloadButton />
+      <CopyButton />
     </div>
   );
 }

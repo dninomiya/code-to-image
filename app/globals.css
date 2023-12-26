@@ -80,6 +80,10 @@
     'Courier New', monospace;
 }
 
+.ͼ1 .cm-line {
+  @apply px-[2px];
+}
+
 .cm-focused {
   @apply !outline-none;
 }
