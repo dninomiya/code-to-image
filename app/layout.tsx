@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/app/providers/theme-provider';
 import AuthorLink from '@/app/components/author-link';
 import AppProvider from '@/app/providers/app-provider';
 import MobileGuard from '@/app/components/mobile-guard';
+import { AppConfig } from '@/app.config';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dninomiya.github.io'),
@@ -38,7 +39,9 @@ export default function RootLayout({
           </AppProvider>
         </ThemeProvider>
         <AuthorLink />
-        <GithubLink href="https://github.com/dninomiya/code-to-image/tree/main" />
+        <GithubLink
+          href={`https://github.com/dninomiya/${AppConfig.repo}/tree/main`}
+        />
       </body>
     </html>
   );
