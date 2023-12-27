@@ -13,11 +13,7 @@ export default function ImageGroup() {
 
   return (
     <div className="relative group">
-      <img
-        src={image}
-        alt=""
-        className="shadow-2xl rounded-lg block max-w-lg max-h-60"
-      />
+      <img src={image} alt="" className="rounded-lg block max-w-lg max-h-60" />
       <Button
         size="icon"
         onClick={() => setImage(null)}
