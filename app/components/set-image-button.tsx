@@ -24,7 +24,12 @@ export default function SetImageButton() {
   }
 
   return (
-    <Button asChild size="icon" variant="ghost" className="rounded-full">
+    <Button
+      asChild
+      size="icon"
+      variant="ghost"
+      className="rounded-full cursor-pointer"
+    >
       <label>
         <ImagePlus size={20} />
         <span className="sr-only">Set Image</span>

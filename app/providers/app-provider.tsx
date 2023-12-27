@@ -5,6 +5,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 type ContextType = {
   image: string | null;
   setImage: React.Dispatch<React.SetStateAction<string | null>>;
+  lang: string;
+  setLang: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const AppContext = createContext({} as ContextType);
@@ -15,6 +17,7 @@ export default function AppProvider({
   children: React.ReactNode;
 }) {
   const [image, setImage] = useState<string | null>('');
+  const [lang, setLang] = useState<string>('tsx');
 
   useEffect(() => {
     async function handlePasteEvent(e: ClipboardEvent) {
@@ -46,6 +49,8 @@ export default function AppProvider({
       value={{
         image,
         setImage,
+        lang,
+        setLang,
       }}
     >
       {children}
