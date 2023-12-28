@@ -13,7 +13,7 @@ export default function Home() {
         <div
           id="canvas"
           className={cn(
-            'relative aspect-video p-20 flex gap-20 justify-center items-center'
+            'relative aspect-video p-20 flex gap-20 justify-center items-center bg-canvas-background'
           )}
         >
           <Editor />

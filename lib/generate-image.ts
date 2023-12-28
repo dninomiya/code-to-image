@@ -1,7 +1,6 @@
 import { domToDataUrl, domToBlob } from 'modern-screenshot';
 
 const options = {
-  backgroundColor: 'var(--canvas-background)',
   scale: 4,
 };
 
