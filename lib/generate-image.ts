@@ -3,7 +3,7 @@ import { domToDataUrl, domToBlob, Options } from 'modern-screenshot';
 const options: Options = {
   scale: 4,
   features: {
-    removeControlCharacter: true,
+    removeControlCharacter: false,
   },
 };
 
