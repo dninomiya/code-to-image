@@ -1,7 +1,10 @@
-import { domToDataUrl, domToBlob } from 'modern-screenshot';
+import { domToDataUrl, domToBlob, Options } from 'modern-screenshot';
 
-const options = {
+const options: Options = {
   scale: 4,
+  features: {
+    removeControlCharacter: true,
+  },
 };
 
 export const generateImage = async (blob?: boolean): Promise<string | Blob> => {
