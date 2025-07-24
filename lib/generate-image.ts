@@ -11,9 +11,10 @@ export const generateImage = async (blob?: boolean): Promise<string | Blob> => {
   const element = document.getElementById('canvas')!;
   const width = element.offsetWidth;
   const height = element.offsetHeight;
+  const aspect = 1200 / 675;
 
-  if (width && height && height * (16 / 9) > width) {
-    element.style.width = `${height * (16 / 9)}px`;
+  if (width && height && height * aspect > width) {
+    element.style.width = `${height * aspect}px`;
   }
 
   const result = blob
